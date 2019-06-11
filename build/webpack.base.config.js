@@ -3,15 +3,15 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
-
+console.log(process.env.NODE_ENV);
 module.exports = {
   entry: {
     app: path.resolve(__dirname, '../src/entry/index.js')
   },
   output: {
-    path: isProduction ? '../dist': '/',
-    filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'development' ? '/': ''
+    path: isProduction ? path.resolve(__dirname, '../dist/'): '/',
+    filename: isProduction ? 'js/[name].js' : '[name].js',
+    publicPath: isProduction ? '': '/'
   },
   module: {
     rules: [

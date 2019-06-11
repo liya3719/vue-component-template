@@ -4,7 +4,6 @@ const webpackBaseConfig = require('./webpack.base.config');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
 const webpackProdConfig = webpackMerge(webpackBaseConfig, {
   mode: 'production',
   module: {
@@ -13,43 +12,32 @@ const webpackProdConfig = webpackMerge(webpackBaseConfig, {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          {
-            loader: 'css-loader',
-            module: true
-          },
-          MiniCssExtractPlugin.loader
+           MiniCssExtractPlugin.loader,
+          'css-loader'
         ]
       },
       {
         test: /\.less$/,
         use: [
           'vue-style-loader',
-          {
-            loader: 'less-loader',
-            module: true
-          },
+           MiniCssExtractPlugin.loader,
           'css-loader',
-          MiniCssExtractPlugin.loader
+          'less-loader'
         ]
       },
       {
         test: /\.(sass|scss)$/,
         use: [
           'vue-style-loader',
-          {
-            loader: 'sass-loader',
-            module: true
-          },
-          'css-loader',
-          MiniCssExtractPlugin.loader
+          MiniCssExtractPlugin.loader,
+          'sass-loader'
         ]
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: 'css/[name].css'
     })
   ],
   optimization: {
@@ -62,7 +50,6 @@ const webpackProdConfig = webpackMerge(webpackBaseConfig, {
         uglifyOptions: {
           compress: {
             unused: true,
-            warnings: false,
             drop_debugger: true
           },
           output: {
@@ -74,7 +61,7 @@ const webpackProdConfig = webpackMerge(webpackBaseConfig, {
         assetNameRegExp: /\.css$/,
         cssProcessorOptions: {
           safe: true,
-          autoprefixer: { disable: true},
+          autoprefixer: { disable: true },
           mergeLonghand: false,
           discardComments: {
             removeAll: true
@@ -82,18 +69,19 @@ const webpackProdConfig = webpackMerge(webpackBaseConfig, {
         },
         canPrint: true
       })
-    ]
-  },
-  splitChunks: {
-    cacheGroups: {
-      vendors: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendors',
-        miniSize: 30000,
-        chunks: 'initial',
-        priority: 1
+    ],
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          minSize: 30000,
+          chunks: 'initial',
+          priority: 1
+        }
       }
     }
   },
   devtool: 'source-map'
-})
+});
+module.exports = webpackProdConfig;

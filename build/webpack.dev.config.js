@@ -2,14 +2,36 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base.config');
 
-console.log(webpackBaseConfig);
-
 const webpackDevConfig = webpackMerge(webpackBaseConfig, {
   mode: 'development',
   devtool: 'cheap-eval-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'postcss-loader'
+          },
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'postcss-loader'
+          },
+          'less-loader'
+        ]
+      }
+    ]
+  },
   devServer: {
     hot: true,
-    port: 8090,
+    port: 8091,
     compress: true,
     proxy: {
       '/test': {
