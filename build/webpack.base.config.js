@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 console.log(process.env.NODE_ENV);
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, '../src/entry/index.js')
+    app: isProduction ? path.resolve(__dirname, '../src/entry/index.js') : path.resolve(__dirname, '../src/entry/exam.js')
   },
   output: {
     path: isProduction ? path.resolve(__dirname, '../dist/'): '/',
