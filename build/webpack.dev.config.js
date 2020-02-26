@@ -22,9 +22,29 @@ const webpackDevConfig = webpackMerge(webpackBaseConfig, {
         use: [
           'vue-style-loader',
           {
-            loader: 'postcss-loader'
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              importLoaders: 1
+            }
           },
-          'less-loader'
+          "postcss-loader",
+          "less-loader"
+        ]
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              importLoaders: 1
+            }
+          },
+          "postcss-loader",
+          "sass-loader"
         ]
       }
     ]

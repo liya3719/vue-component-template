@@ -36,6 +36,7 @@ module.exports = {
           happyPackMode: true
         }
       },
+      // 如果需要对图片转成base64,请使用url-loader
       {
         test: /\.(jpg|jpeg|gif|png|svg)$/,
         use: [
