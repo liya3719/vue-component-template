@@ -11,7 +11,8 @@ module.exports = {
   output: {
     path: isProduction ? path.resolve(__dirname, '../dist/'): '/',
     filename: isProduction ? 'js/[name].js' : '[name].js',
-    publicPath: isProduction ? '': '/'
+    publicPath: isProduction ? '': '/',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
