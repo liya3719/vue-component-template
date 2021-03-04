@@ -25,6 +25,7 @@
     "vue-template-compiler": "^2.6.10",
     "webpack": "^4.33.0"
   },
+  "files": ["./example", "./dist"],
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.4.4",
