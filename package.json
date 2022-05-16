@@ -19,14 +19,11 @@
   },
   "homepage": "https://github.com/liya3719/vue-component-template#readme",
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.33.0"
+    
   },
   "files": ["./example", "./dist"],
   "devDependencies": {
+    "@babel/polyfill": "^7.4.4",
     "@babel/core": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
@@ -53,6 +50,10 @@
     "uglifyjs-webpack-plugin": "^2.1.3",
     "url-loader": "^2.0.0",
     "vue-style-loader": "^4.1.2",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.33.0",
     "webpack-cli": "^3.3.3",
     "webpack-dev-server": "^3.7.1",
     "webpack-merge": "^4.2.1"
